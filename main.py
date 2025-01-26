@@ -4,6 +4,7 @@ from player import *
 from circleshape import *
 from asteroids import *
 from AsteroidField import *
+import sys
 
 def main ():
     pygame.init()
@@ -32,6 +33,13 @@ def main ():
 
         for sprite in updatable:
             sprite.update(dt)
+
+        for asteroid in asteroids:
+            if asteroid.collision_check(player) == True:
+                sys.exit("Game over!")
+            
+            
+
         for sprite in drawable:   
             sprite.draw(screen)  # Use your custom draw method
 
